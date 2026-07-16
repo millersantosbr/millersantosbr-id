@@ -54,21 +54,23 @@ test("server-renders the finished Miller Santos portfolio", async () => {
   assert.match(html, /Código aberto/);
   assert.match(html, /Vou de Van Alagoas/);
   assert.match(html, /curriculo-miller-santos\.pdf/);
-  assert.match(html, /http:\/\/localhost\/og\.png/);
+  assert.match(html, /https:\/\/millersantosbr-id\.web\.app\/og\.png/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 
 test("ships the portfolio assets and removes starter-only dependencies", async () => {
-  const [page, layout, portfolio, styles, packageJson] = await Promise.all([
+  const [page, layout, portfolio, styles, packageJson, nextConfig, firebaseConfig] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/portfolio.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../next.config.ts", import.meta.url), "utf8"),
+    readFile(new URL("../firebase.json", import.meta.url), "utf8"),
   ]);
 
   assert.match(page, /<Portfolio \/>/);
-  assert.match(layout, /generateMetadata/);
+  assert.match(layout, /export const metadata/);
   assert.match(layout, /\/og\.png/);
   assert.match(portfolio, /api\.github\.com/);
   assert.match(portfolio, /per_page=100/);
@@ -80,6 +82,9 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
   assert.match(styles, /\.action-icon-down::after/);
   assert.doesNotMatch(styles, /\.metric-strip/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+  assert.match(nextConfig, /FIREBASE_STATIC_EXPORT/);
+  assert.match(nextConfig, /output: "export"/);
+  assert.match(firebaseConfig, /"public": "out"/);
 
   await access(new URL("../public/og.png", import.meta.url));
   await access(new URL("../public/curriculo-miller-santos.pdf", import.meta.url));

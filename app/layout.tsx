@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import {
   Bricolage_Grotesque,
   Geist,
@@ -22,19 +21,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ||
-    requestHeaders.get("host") ||
-    "localhost:3000";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ||
-    (host.startsWith("localhost") ? "http" : "https");
-  const metadataBase = new URL(protocol + "://" + host);
+const SITE_URL = "https://millersantosbr-id.web.app";
 
-  return {
-    metadataBase,
+export const metadata: Metadata = {
+    metadataBase: new URL(SITE_URL),
     title: {
       default: "Miller Santos — Produtos digitais com IA",
       template: "%s — Miller Santos",
@@ -84,8 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
-  };
-}
+};
 
 export default function RootLayout({
   children,

@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "vinext dev",
     "build": "vinext build",
+    "build:firebase": "node scripts/firebase-build.mjs",
+    "deploy:firebase": "npm run build:firebase && firebase deploy --only hosting --project millersantosbr-id",
     "start": "vinext start",
     "test": "npm run build && node --test tests/rendered-html.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
