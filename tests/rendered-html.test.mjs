@@ -55,6 +55,9 @@ test("server-renders the finished Miller Santos portfolio", async () => {
   assert.match(html, /Vou de Van Alagoas/);
   assert.match(html, /curriculo-miller-santos\.pdf/);
   assert.match(html, /https:\/\/millersantosbr-id\.web\.app\/og\.png/);
+  assert.match(html, /\/site\.webmanifest/);
+  assert.match(html, /\/favicon\.svg/);
+  assert.match(html, /\/apple-touch-icon\.png/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 
@@ -86,7 +89,22 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
   assert.match(nextConfig, /output: "export"/);
   assert.match(firebaseConfig, /"public": "out"/);
 
-  await access(new URL("../public/og.png", import.meta.url));
-  await access(new URL("../public/curriculo-miller-santos.pdf", import.meta.url));
+  const manifest = await readFile(
+    new URL("../public/site.webmanifest", import.meta.url),
+    "utf8",
+  );
+  assert.match(manifest, /"name": "millersantosbr ID"/);
+  assert.match(manifest, /web-app-manifest-512x512\.png/);
+
+  await Promise.all([
+    access(new URL("../public/og.png", import.meta.url)),
+    access(new URL("../public/curriculo-miller-santos.pdf", import.meta.url)),
+    access(new URL("../public/favicon.ico", import.meta.url)),
+    access(new URL("../public/favicon.svg", import.meta.url)),
+    access(new URL("../public/favicon-96x96.png", import.meta.url)),
+    access(new URL("../public/apple-touch-icon.png", import.meta.url)),
+    access(new URL("../public/web-app-manifest-192x192.png", import.meta.url)),
+    access(new URL("../public/web-app-manifest-512x512.png", import.meta.url)),
+  ]);
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
 });

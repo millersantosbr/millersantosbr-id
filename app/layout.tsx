@@ -31,6 +31,8 @@ export const metadata: Metadata = {
     },
     description:
       "Portfólio de Miller Santos: desenvolvedor de produtos digitais que transforma problemas reais em experiências úteis com web, cloud e inteligência artificial.",
+    applicationName: "millersantosbr ID",
+    manifest: "/site.webmanifest",
     keywords: [
       "Miller Santos",
       "desenvolvedor",
@@ -45,6 +47,26 @@ export const metadata: Metadata = {
     creator: "Miller Santos",
     alternates: {
       canonical: "/",
+    },
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "any" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+        { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      ],
+      shortcut: "/favicon.ico",
+      apple: [
+        {
+          url: "/apple-touch-icon.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+      ],
+    },
+    appleWebApp: {
+      capable: true,
+      title: "millersantosbr ID",
+      statusBarStyle: "default",
     },
     openGraph: {
       type: "website",
