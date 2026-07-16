@@ -322,9 +322,9 @@ export default function Portfolio() {
               Maceió, Alagoas · produtos com IA
             </p>
             <h1>
-              SUPORTE
+              PROBLEMAS
               <br />
-              QUE VIROU
+              REAIS VIRAM
               <br />
               <em>produto.</em>
             </h1>

@@ -41,8 +41,9 @@ test("server-renders the finished Miller Santos portfolio", async () => {
   const html = await response.text();
   assert.match(html, /<html lang="pt-BR"/i);
   assert.match(html, /Miller Santos — Produtos digitais com IA/i);
-  assert.match(html, /SUPORTE/);
-  assert.match(html, /QUE VIROU/);
+  assert.match(html, /PROBLEMAS/);
+  assert.match(html, /REAIS VIRAM/);
+  assert.doesNotMatch(html, /SUPORTE[\s\S]*QUE VIROU/);
   assert.match(html, /Código aberto/);
   assert.match(html, /Vou de Van Alagoas/);
   assert.match(html, /curriculo-miller-santos\.pdf/);
