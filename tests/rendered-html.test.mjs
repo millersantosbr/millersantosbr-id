@@ -44,6 +44,10 @@ test("server-renders the finished Miller Santos portfolio", async () => {
   assert.match(html, /PROBLEMAS/);
   assert.match(html, /REAIS VIRAM/);
   assert.doesNotMatch(html, /SUPORTE[\s\S]*QUE VIROU/);
+  assert.match(html, /MS \/ BUILD SYSTEM/);
+  assert.match(html, /PROBLEMA REAL/);
+  assert.match(html, /PRODUTO ÚTIL/);
+  assert.doesNotMatch(html, /anos resolvendo problemas|estrelas no GitHub/);
   assert.match(html, /Código aberto/);
   assert.match(html, /Vou de Van Alagoas/);
   assert.match(html, /curriculo-miller-santos\.pdf/);
@@ -67,6 +71,9 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
   assert.match(portfolio, /per_page=100/);
   assert.match(portfolio, /syncState/);
   assert.match(styles, /prefers-reduced-motion/);
+  assert.match(styles, /product-core-spin/);
+  assert.match(styles, /systems-scan-sweep/);
+  assert.doesNotMatch(styles, /\.metric-strip/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await access(new URL("../public/og.png", import.meta.url));

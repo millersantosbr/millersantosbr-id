@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 type GitHubProfile = {
   login: string;
@@ -260,11 +260,6 @@ export default function Portfolio() {
     return () => controller.abort();
   }, []);
 
-  const totalStars = useMemo(
-    () => repos.reduce((total, repo) => total + repo.stargazers_count, 0),
-    [repos],
-  );
-
   const closeMenu = () => setMenuOpen(false);
 
   return (
@@ -369,22 +364,51 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="metric-strip" aria-label="Resumo profissional">
-            <div>
-              <strong>{profile.public_repos || repos.length}</strong>
-              <span>projetos públicos</span>
+          <div className="systems-strip" aria-labelledby="systems-title">
+            <div className="systems-intro">
+              <span className="micro-label">MS / BUILD SYSTEM</span>
+              <h2 id="systems-title">
+                Do problema ao <em>produto.</em>
+              </h2>
+              <p>Escutar → modelar → construir → evoluir</p>
             </div>
-            <div>
-              <strong>5+</strong>
-              <span>anos resolvendo problemas</span>
-            </div>
-            <div>
-              <strong>03</strong>
-              <span>frentes: IA, web e cloud</span>
-            </div>
-            <div>
-              <strong>{String(totalStars).padStart(2, "0")}</strong>
-              <span>estrelas no GitHub</span>
+
+            <div className="systems-scene" aria-hidden="true">
+              <div className="systems-grid" />
+              <div className="systems-scan" />
+              <div className="system-track" />
+
+              <div className="process-node process-node-input">
+                <span>INPUT / 01</span>
+                <strong>PROBLEMA REAL</strong>
+              </div>
+
+              <div className="core-orbit">
+                <span className="orbit-ring orbit-ring-one" />
+                <span className="orbit-ring orbit-ring-two" />
+                <div className="product-core">
+                  <span className="core-face face-front">IA</span>
+                  <span className="core-face face-back">WEB</span>
+                  <span className="core-face face-right">CLOUD</span>
+                  <span className="core-face face-left">UX</span>
+                  <span className="core-face face-top">DATA</span>
+                  <span className="core-face face-bottom">SHIP</span>
+                </div>
+              </div>
+
+              <div className="process-node process-node-output">
+                <span>OUTPUT / 03</span>
+                <strong>PRODUTO ÚTIL</strong>
+              </div>
+
+              <span className="system-chip chip-strategy">ESTRATÉGIA</span>
+              <span className="system-chip chip-code">CÓDIGO</span>
+              <span className="system-chip chip-impact">IMPACTO</span>
+
+              <div className="scene-readout">
+                <span>CORE / IA + WEB + CLOUD</span>
+                <span>SYSTEM ONLINE</span>
+              </div>
             </div>
           </div>
         </section>
