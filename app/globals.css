@@ -155,13 +155,111 @@ img {
 }
 
 .topbar-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
   justify-self: end;
   padding-bottom: 0.3rem;
   border-bottom: 2px solid var(--ms-ink);
 }
 
-.topbar-cta span {
-  color: var(--ms-clay);
+.action-icon {
+  --icon-size: 1.5rem;
+  --icon-bg: var(--ms-ink);
+  --icon-fg: var(--ms-lime);
+  --icon-border: var(--ms-ink);
+  --icon-shadow: var(--ms-clay);
+  position: relative;
+  display: inline-block;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 1px solid var(--icon-border);
+  border-radius: 0.15rem;
+  background: var(--icon-bg);
+  color: var(--icon-fg);
+  box-shadow: 0.16rem 0.16rem 0 var(--icon-shadow);
+  transition:
+    transform 220ms var(--ms-ease-out),
+    box-shadow 220ms var(--ms-ease-out),
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.action-icon::before,
+.action-icon::after {
+  position: absolute;
+  content: "";
+}
+
+.action-icon-external::before {
+  top: 52%;
+  left: 26%;
+  width: 48%;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: rotate(-45deg);
+}
+
+.action-icon-external::after {
+  top: 24%;
+  right: 23%;
+  width: 31%;
+  height: 31%;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.action-icon-down::before,
+.action-icon-up::before {
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 46%;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.action-icon-down::before {
+  top: 20%;
+}
+
+.action-icon-down::after {
+  top: 43%;
+  left: 35%;
+  width: 29%;
+  height: 29%;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.action-icon-up::before {
+  top: 34%;
+}
+
+.action-icon-up::after {
+  top: 24%;
+  left: 35%;
+  width: 29%;
+  height: 29%;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(45deg);
+}
+
+a:hover .action-icon {
+  transform: translate(0.12rem, -0.12rem);
+  box-shadow: 0.05rem 0.28rem 0 var(--icon-shadow);
+}
+
+.topbar-cta .action-icon {
+  --icon-size: 1.25rem;
+  --icon-bg: var(--ms-clay);
+  --icon-fg: var(--ms-paper);
+  --icon-border: var(--ms-clay);
+  --icon-shadow: var(--ms-ink);
 }
 
 .menu-toggle {
@@ -285,12 +383,30 @@ img {
   background: var(--ms-clay);
 }
 
+.button-primary .action-icon {
+  --icon-bg: var(--ms-lime);
+  --icon-fg: var(--ms-ink);
+  --icon-border: var(--ms-lime);
+  --icon-shadow: rgb(251 250 246 / 0.35);
+}
+
+.button-primary:hover .action-icon-down {
+  transform: translateY(0.18rem);
+}
+
 .button-secondary {
   background: transparent;
 }
 
 .button-secondary:hover {
   background: var(--ms-paper);
+}
+
+.button-secondary .action-icon {
+  --icon-bg: var(--ms-clay);
+  --icon-fg: var(--ms-paper);
+  --icon-border: var(--ms-clay);
+  --icon-shadow: var(--ms-ink);
 }
 
 .portrait-stage {
@@ -1051,6 +1167,16 @@ img {
   font-weight: 700;
 }
 
+.project-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.project-links .action-icon {
+  --icon-size: 1.25rem;
+}
+
 .project-links a,
 .github-profile-link {
   padding-bottom: 0.2rem;
@@ -1067,8 +1193,12 @@ img {
   font-weight: 650;
 }
 
-.github-profile-link span {
-  color: var(--ms-clay);
+.github-profile-link .action-icon {
+  --icon-size: 1.75rem;
+  --icon-bg: var(--ms-clay);
+  --icon-fg: var(--ms-paper);
+  --icon-border: var(--ms-clay);
+  --icon-shadow: var(--ms-ink);
 }
 
 .method {
@@ -1334,8 +1464,12 @@ img {
   overflow-wrap: anywhere;
 }
 
-.contact-email span {
-  color: var(--ms-lime);
+.contact-email .action-icon,
+.contact-links .action-icon {
+  --icon-bg: var(--ms-lime);
+  --icon-fg: var(--ms-ink);
+  --icon-border: var(--ms-ink);
+  --icon-shadow: var(--ms-ink);
 }
 
 .contact-links {
@@ -1346,10 +1480,17 @@ img {
 }
 
 .contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.contact-links .action-icon {
+  --icon-size: 1.3rem;
 }
 
 .footer {
@@ -1368,6 +1509,20 @@ img {
 
 .footer > a:last-child {
   justify-self: end;
+}
+
+.footer-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.footer-back .action-icon {
+  --icon-size: 1.3rem;
+  --icon-bg: var(--ms-lime);
+  --icon-fg: var(--ms-ink);
+  --icon-border: var(--ms-lime);
+  --icon-shadow: var(--ms-clay);
 }
 
 @keyframes live-pulse {

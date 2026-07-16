@@ -37,6 +37,19 @@ const API_HEADERS = {
   "X-GitHub-Api-Version": "2026-03-10",
 };
 
+function ActionIcon({
+  direction = "external",
+}: {
+  direction?: "external" | "down" | "up";
+}) {
+  return (
+    <span
+      className={`action-icon action-icon-${direction}`}
+      aria-hidden="true"
+    />
+  );
+}
+
 const fallbackProfile: GitHubProfile = {
   login: "millersantosbr",
   name: "Miller Santos",
@@ -305,7 +318,7 @@ export default function Portfolio() {
         </nav>
 
         <a className="topbar-cta" href="mailto:elvismillerfreitas@gmail.com">
-          Vamos conversar <span aria-hidden="true">↗</span>
+          Vamos conversar <ActionIcon />
         </a>
       </header>
 
@@ -330,14 +343,14 @@ export default function Portfolio() {
             </p>
             <div className="hero-actions">
               <a className="button button-primary" href="#projetos">
-                Explorar projetos <span aria-hidden="true">↓</span>
+                Explorar projetos <ActionIcon direction="down" />
               </a>
               <a
                 className="button button-secondary"
                 href="/curriculo-miller-santos.pdf"
                 target="_blank"
               >
-                Ver currículo <span aria-hidden="true">↗</span>
+                Ver currículo <ActionIcon />
               </a>
             </div>
           </div>
@@ -503,7 +516,7 @@ export default function Portfolio() {
                           rel="noreferrer"
                           aria-label={"Abrir demonstração de " + repo.name}
                         >
-                          Demo ↗
+                          Demo <ActionIcon />
                         </a>
                       )}
                       <a
@@ -512,7 +525,7 @@ export default function Portfolio() {
                         rel="noreferrer"
                         aria-label={"Abrir " + repo.name + " no GitHub"}
                       >
-                        Código ↗
+                        Código <ActionIcon />
                       </a>
                     </div>
                   </div>
@@ -528,7 +541,7 @@ export default function Portfolio() {
             rel="noreferrer"
           >
             Ver perfil completo no GitHub
-            <span aria-hidden="true">↗</span>
+            <ActionIcon />
           </a>
         </section>
 
@@ -671,7 +684,7 @@ export default function Portfolio() {
             <em>produto?</em>
           </h2>
           <a className="contact-email" href="mailto:elvismillerfreitas@gmail.com">
-            elvismillerfreitas@gmail.com <span aria-hidden="true">↗</span>
+            elvismillerfreitas@gmail.com <ActionIcon />
           </a>
           <div className="contact-links">
             <a
@@ -679,17 +692,17 @@ export default function Portfolio() {
               target="_blank"
               rel="noreferrer"
             >
-              GitHub ↗
+              GitHub <ActionIcon />
             </a>
             <a
               href="https://www.linkedin.com/in/miller-santos"
               target="_blank"
               rel="noreferrer"
             >
-              LinkedIn ↗
+              LinkedIn <ActionIcon />
             </a>
             <a href="/curriculo-miller-santos.pdf" target="_blank">
-              Currículo ↗
+              Currículo <ActionIcon />
             </a>
           </div>
         </section>
@@ -700,7 +713,9 @@ export default function Portfolio() {
           ms<span>/</span>
         </a>
         <p>Projetado com millersantosbr ID · {new Date().getFullYear()}</p>
-        <a href="#inicio">Voltar ao topo ↑</a>
+        <a className="footer-back" href="#inicio">
+          Voltar ao topo <ActionIcon direction="up" />
+        </a>
       </footer>
     </div>
   );

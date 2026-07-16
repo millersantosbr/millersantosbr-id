@@ -48,6 +48,9 @@ test("server-renders the finished Miller Santos portfolio", async () => {
   assert.match(html, /PROBLEMA REAL/);
   assert.match(html, /PRODUTO ÚTIL/);
   assert.doesNotMatch(html, /anos resolvendo problemas|estrelas no GitHub/);
+  assert.match(html, /action-icon-external/);
+  assert.match(html, /action-icon-down/);
+  assert.doesNotMatch(html, /↗|↓|↑/);
   assert.match(html, /Código aberto/);
   assert.match(html, /Vou de Van Alagoas/);
   assert.match(html, /curriculo-miller-santos\.pdf/);
@@ -73,6 +76,8 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
   assert.match(styles, /prefers-reduced-motion/);
   assert.match(styles, /product-core-spin/);
   assert.match(styles, /systems-scan-sweep/);
+  assert.match(styles, /\.action-icon-external::after/);
+  assert.match(styles, /\.action-icon-down::after/);
   assert.doesNotMatch(styles, /\.metric-strip/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
