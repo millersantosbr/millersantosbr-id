@@ -83,6 +83,9 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
   assert.match(styles, /systems-scan-sweep/);
   assert.match(styles, /\.action-icon-external::after/);
   assert.match(styles, /\.action-icon-down::after/);
+  assert.match(styles, /system-signal-flow-mobile/);
+  assert.match(styles, /@media \(max-width: 420px\)/);
+  assert.match(styles, /env\(safe-area-inset-left\)/);
   assert.doesNotMatch(styles, /\.metric-strip/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.match(nextConfig, /FIREBASE_STATIC_EXPORT/);
