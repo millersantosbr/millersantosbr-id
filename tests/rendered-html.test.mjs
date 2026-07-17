@@ -88,6 +88,7 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
   assert.match(styles, /env\(safe-area-inset-left\)/);
   assert.doesNotMatch(styles, /\.metric-strip/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
+  assert.doesNotMatch(packageJson, /drizzle|db:generate/);
   assert.match(nextConfig, /FIREBASE_STATIC_EXPORT/);
   assert.match(nextConfig, /output: "export"/);
   assert.match(firebaseConfig, /"public": "out"/);
@@ -110,4 +111,9 @@ test("ships the portfolio assets and removes starter-only dependencies", async (
     access(new URL("../public/web-app-manifest-512x512.png", import.meta.url)),
   ]);
   await assert.rejects(access(new URL("app/_sites-preview", templateRoot)));
+  await assert.rejects(access(new URL("db/index.ts", templateRoot)));
+  await assert.rejects(access(new URL("drizzle.config.ts", templateRoot)));
+  await assert.rejects(
+    access(new URL("examples/d1/app/api/notes/route.ts", templateRoot)),
+  );
 });
