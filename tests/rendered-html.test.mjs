@@ -58,6 +58,9 @@ test("server-renders the finished Miller Santos portfolio", async () => {
   assert.match(html, /\/site\.webmanifest/);
   assert.match(html, /\/favicon\.svg/);
   assert.match(html, /\/apple-touch-icon\.png/);
+  assert.match(html, /Desenvolvido por/);
+  assert.match(html, /footer-github-mark/);
+  assert.doesNotMatch(html, /Projetado com millersantosbr ID/);
   assert.doesNotMatch(html, /codex-preview|Your site is taking shape/);
 });
 

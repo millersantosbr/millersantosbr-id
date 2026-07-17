@@ -50,6 +50,22 @@ function ActionIcon({
   );
 }
 
+function GitHubMark() {
+  return (
+    <svg
+      className="footer-github-mark"
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M12 .7a11.3 11.3 0 0 0-3.6 22c.6.1.8-.2.8-.5v-2c-3.3.7-4-1.4-4-1.4-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.3.9.1-.7.4-1.2.7-1.5-2.7-.3-5.5-1.4-5.5-6.2 0-1.4.5-2.6 1.2-3.5-.1-.3-.5-1.6.1-3.5 0 0 1-.3 3.7 1.3a12.8 12.8 0 0 1 6.7 0A5 5 0 0 1 19 6.2c.6 2 .2 3.2.1 3.5.8.9 1.2 2.1 1.2 3.5 0 4.8-2.8 5.9-5.5 6.2.4.4.8 1.1.8 2.2v3.3c0 .3.2.6.8.5A11.3 11.3 0 0 0 12 .7Z"
+      />
+    </svg>
+  );
+}
+
 const fallbackProfile: GitHubProfile = {
   login: "millersantosbr",
   name: "Miller Santos",
@@ -712,7 +728,16 @@ export default function Portfolio() {
         <a className="brand-mark" href="#inicio" aria-label="Voltar ao início">
           ms<span>/</span>
         </a>
-        <p>Projetado com millersantosbr ID · {new Date().getFullYear()}</p>
+        <p className="footer-credit">
+          <span>Desenvolvido por</span>
+          <a
+            href="https://github.com/millersantosbr"
+            target="_blank"
+            rel="noreferrer"
+          >
+            millersantosbr <GitHubMark />
+          </a>
+        </p>
         <a className="footer-back" href="#inicio">
           Voltar ao topo <ActionIcon direction="up" />
         </a>

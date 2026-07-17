@@ -1507,6 +1507,53 @@ a:hover .action-icon {
   font-size: 0.7rem;
 }
 
+.footer-credit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  color: var(--ms-sage);
+  letter-spacing: 0.01em;
+}
+
+.footer-credit a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--ms-paper);
+  font-weight: 750;
+  text-decoration-line: underline;
+  text-decoration-color: var(--ms-clay);
+  text-decoration-thickness: 0.11rem;
+  text-underline-offset: 0.2rem;
+  transition:
+    color 180ms ease,
+    text-decoration-color 180ms ease,
+    transform 180ms var(--ms-ease-out);
+}
+
+.footer-github-mark {
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+  color: var(--ms-lime);
+  transition:
+    color 180ms ease,
+    transform 180ms var(--ms-ease-out);
+}
+
+.footer-credit a:hover {
+  color: var(--ms-lime);
+  text-decoration-color: var(--ms-paper);
+  transform: translateY(-0.08rem);
+}
+
+.footer-credit a:hover .footer-github-mark {
+  color: var(--ms-paper);
+  transform: rotate(-8deg) scale(1.08);
+}
+
 .footer > a:last-child {
   justify-self: end;
 }
@@ -2033,6 +2080,10 @@ a:hover .action-icon {
     grid-row: 2;
     margin: 0;
     line-height: 1.5;
+  }
+
+  .footer-credit {
+    justify-content: flex-start;
   }
 
   .footer-back {
