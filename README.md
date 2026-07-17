@@ -119,40 +119,6 @@ The layout has dedicated behaviors for desktop, tablet, standard smartphones, an
 - External links use the appropriate relationship attributes where applicable.
 - The public résumé and contact details are intentionally published as portfolio content.
 
-## Run locally
-
-### Requirements
-
-- Node.js `>=22.13.0`
-- npm
-
-```bash
-git clone https://github.com/millersantosbr/millersantosbr-id.git
-cd millersantosbr-id
-npm ci
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000).
-
-### Quality checks
-
-```bash
-npm run lint
-npm test
-npm run build:firebase
-```
-
-### Firebase deployment
-
-With an authenticated Firebase CLI session and access to the correct project:
-
-```bash
-npm run deploy:firebase
-```
-
-The production build is exported to `out/` and deployed to [millersantosbr-id.web.app](https://millersantosbr-id.web.app).
-
 ## Project structure
 
 ```text
